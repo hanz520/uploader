@@ -1,0 +1,110 @@
+.webuploader {
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  .webuploader-drag {
+    display: inline-block;
+    width: 400px;
+    height: 200px;
+    background: #fff;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    &:hover{
+      border-color: #409eff;
+    }
+    .webuploader-drag-icon {
+      text-align: center;
+      margin: 10px auto 0;
+      height: 90px;
+      line-height: 1.4;
+      i{
+        font-size: 80px;
+        color: #c0c4cc;
+      }
+    }
+    .webuploader-drag-btn {
+      text-align: center;
+    }
+    .webuploader-drag-tip {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+  .webuploader-tip{
+    margin-top: 6px;
+    color: #606266;
+  }
+  .webuploader-list{
+    font-size: 14px;
+    ul{
+      width: 100%;
+      overflow: hidden;
+      color: #606266;
+      li{
+        margin: 2px 0 3px;
+        padding-right: 30px;
+        position: relative;
+        line-height: 1.5;
+        text-align: left;
+        transition: 0.3s ease-out all;
+        cursor: pointer;
+        &:hover{
+          background: #ebebeb;
+          color: #409eff;
+          span.operate-1{
+            display: none;
+          }
+          span.operate-2{
+            display: block;
+          }          
+        }
+        span.title{
+          i{
+            margin-right: 5px;
+            position: relative;
+            top: 1px;
+          }
+          font-size: 14px;
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        span.loading{
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          display: block;
+          // display: none;
+          width: 100%;
+          height: 2 px;
+          background: #ebeef5;
+          i{
+            display: block;
+            width: 0;
+            background: #409eff;
+            height: 2px;
+          }
+        }
+        span.operate{
+          position: absolute;
+          right: 0px;
+          top: 1px;
+          font-size: 12px;
+          .success{
+            color: #67c23a;
+          }
+          .error{
+            color: #d17939;
+          }
+          .delete{
+            color: #ccc;
+          }
+        }
+        span.operate-2{
+          display: none;
+        }
+      }
+    }
+  }
+}
