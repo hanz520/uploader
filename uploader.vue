@@ -17,7 +17,7 @@
       
       <ul>
         <li v-for="item in fileList" :key="item.id">
-          <span class="title"><i class="uploader uploader-file"></i>{{item.name}}{{item.status}}</span>
+          <span class="title"><i class="uploader uploader-file"></i>{{item.name}}</span>
           <span v-if="item.progress" class="loading"><i :style="`width: ${getProgress(item)};`"></i></span>
           <span class="operate operate-1">
             <i v-if="item.status == 'loading'">{{getProgress(item)}}</i>
@@ -303,8 +303,19 @@ export default {
     fileList(val) {
       if(val.length === 0) {
         this.uploader.reset()
+      }else{
+        this.fileList.map(v => {
+          if(!v.status) {
+            v.status = 'success'
+          }
+        })
       }
+    },
+    // formData发生变化，需要重新修改实例里面的formData数据
+    formData(newVal) {
+      this.uploader.option('formData', newVal)
     }
+    // 其他类似的属性可能也需要做此操作，这里待以后用到时候补上
   }
 }
 </script>
