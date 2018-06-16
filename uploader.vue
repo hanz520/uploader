@@ -316,6 +316,11 @@ export default {
       this.uploader.option('formData', newVal)
     }
     // 其他类似的属性可能也需要做此操作，这里待以后用到时候补上
+  },
+  // 注销组件
+  beforeDestroy() {
+    this.uploader.destroy()
+    this.uploader = null
   }
 }
 </script>
