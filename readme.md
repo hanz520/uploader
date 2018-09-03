@@ -95,4 +95,7 @@ export default {
 而Chrome的请求头中，Accept: */*
 
 此时，需要后端配合设置 `ignoreAcceptHeader` 为`true`, 就可以正常上传了
+
+### 注意
+先初始化一个非拖拽组件，然后再初始化一个拖拽组件，可能会出现非拖拽组件失效。
    
