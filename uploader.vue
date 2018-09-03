@@ -1,13 +1,13 @@
 <template>
-  <div id="uploader" class="webuploader"> 
-    <div v-if="this.drag" ref="myDrager" class="webuploader-drag">
+  <div class="webuploader"> 
+    <div v-if="this.drag" :ref="this.myDrager" class="webuploader-drag">
       <div class="webuploader-drag-icon">
         <i class="uploader uploader-cloud-upload"></i>
       </div>
-      <div class="webuploader-drag-btn" ref="myPicker">{{button}}</div>
+      <div class="webuploader-drag-btn" :ref="this.myPicker">{{button}}</div>
       <div class="webuploader-drag-tip">{{dragTip}}</div>
     </div>
-    <div v-else ref="myPicker" class="webuploader-btn">
+    <div v-else :ref="this.myPicker" class="webuploader-btn">
       {{button}}
     </div>
     <div v-if="$slots.tip" class="webuploader-tip">
@@ -38,6 +38,7 @@
 import './webuploader.js'
 import UploaderSwf from './Uploader.swf'
 export default {
+  name: 'NkUploader',
   created() {
     // 外面载入的默认为上传成功，用于回显用
     this.fileList.map(v => {
@@ -176,19 +177,21 @@ export default {
   },
   data() {
     return {
-      uploader: {}
+      uploader: {},
+      myDrager: 'myDrager_' + Math.random().toString().substring(2, 18),   // 生成id
+      myPicker: 'myPicker_' + Math.random().toString().substring(2, 18)    // 生成id
     }
   },
   methods: {
     init() {
       // 初始化实例
       this.uploader = WebUploader.create({
-        dnd: this.$refs.myDrager, // 拖拽区域
-        disableGlobalDnd: this.$refs.myDrager,
+        dnd: this.$refs[this.myDrager], // 拖拽区域
+        disableGlobalDnd: this.$refs[this.myDrager],
         swf: UploaderSwf,
         server: this.action, // 上传服务器接口
         pick: {
-          id: this.$refs.myPicker, // 上传按钮
+          id: this.$refs[this.myPicker], // 上传按钮
           multiple: this.multiple //  多选
         },
         accept: this.accept, // 接收文件类型
